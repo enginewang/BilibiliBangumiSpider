@@ -8,10 +8,9 @@ import re
 from scrapy import Request
 
 
-
-
 class VideoSpider(scrapy.Spider):
-    name = 'video'
+    # scrapy默认配置
+    name = 'index'
     allowed_domains = ['bilibili.com']
     start_urls = [
                 'https://bangumi.bilibili.com/media/web_api/search/result?order=3&st=1&sort=0&page=1&season_type=1&pagesize=20'
@@ -22,10 +21,8 @@ class VideoSpider(scrapy.Spider):
         #print(response.body)
         bangumi_item = BilibiliPlanItem()
         page = 1
-        #while page < 155:
-        #this_url = 'https://bangumi.bilibili.com/media/web_api/search/result?order=3&st=1&sort=0&page=' + str(page) + '&season_type=1&pagesize=20'
-        content = response.body
-        content = str(content, "utf-8")
+        # 内容为api页面的json格式
+        content = str(response.body, "utf-8")
         result = json.loads(content)['result']
         bangumi_content = result['data']
         for bangumi_data in bangumi_content:
@@ -42,9 +39,10 @@ class VideoSpider(scrapy.Spider):
                 bangumi_item['bilibili_score'] = "null"
             bangumi_item['detail_url'] = "https://www.bilibili.com/bangumi/media/md" + str(bangumi_item['media_id'])
             yield bangumi_item
-        while page < 50:
+        # 翻页
+        while page < 255:
             page = page + 1
             next_url = 'https://bangumi.bilibili.com/media/web_api/search/result?order=3&st=1&sort=0&page=' + str(page) \
                    + '&season_type=1&pagesize=20'
-        #print("+++++++++++++++++++ next_url = %s" % next_url)
+            # 把新的页面url加入待爬取页面
             yield scrapy.Request(response.urljoin(next_url), callback=self.parse)

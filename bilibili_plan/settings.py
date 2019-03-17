@@ -14,6 +14,7 @@ BOT_NAME = 'bilibili_plan'
 SPIDER_MODULES = ['bilibili_plan.spiders']
 NEWSPIDER_MODULE = 'bilibili_plan.spiders'
 
+# MySQL配置信息，当然也可以在pipelines里写，这里我是本地的mysql
 MYSQL_HOST = 'localhost'
 MYSQL_DBNAME = 'bangumi'
 MYSQL_USER = 'engine'
@@ -30,7 +31,8 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 1
+# 延迟时间，越长越不容易被封，建议3-6秒
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16

@@ -9,6 +9,7 @@ from bilibili_plan import settings
 
 
 class BilibiliPlanPipeline(object):
+    # 连接信息配置
     def __init__(self):
         self.connect = pymysql.connect(
             host=settings.MYSQL_HOST,
@@ -29,6 +30,7 @@ class BilibiliPlanPipeline(object):
         followed_number = item['followed_number']
         bilibili_score = item['bilibili_score']
         detail_url = item['detail_url']
+        # 写和执行sql语句，这里交代表表名
         sql_command = "insert ignore into bilibili_index(name, media_id, play_href, cover_url, pub_time, watch_number, followed_number, bilibili_score, detailed_url) values ('" + \
                             name + "','" + str(media_id) + "','" + play_href + "','" + cover_url + "','" + str(pub_time) + "','" + watch_number + "','" + followed_number + "','" + \
                             str(bilibili_score) + "','" + detail_url + "');"

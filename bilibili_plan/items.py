@@ -19,6 +19,4 @@ class BilibiliPlanItem(scrapy.Item):
     followed_number = scrapy.Field()
     bilibili_score = scrapy.Field()
     detail_url = scrapy.Field()
-    # define the fields for your item here like:
-    # name = scrapy.Field()
     pass
