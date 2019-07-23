@@ -9,7 +9,6 @@ import scrapy
 
 
 class BilibiliPlanItem(scrapy.Item):
-
     name = scrapy.Field()
     media_id = scrapy.Field()
     play_href = scrapy.Field()
@@ -19,4 +18,8 @@ class BilibiliPlanItem(scrapy.Item):
     followed_number = scrapy.Field()
     bilibili_score = scrapy.Field()
     detail_url = scrapy.Field()
+    desc = scrapy.Field()
+    tags = scrapy.Field()
+    cv = scrapy.Field()
+    staff = scrapy.Field()
     pass
