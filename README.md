@@ -26,6 +26,7 @@ CREATE TABLE `bilibili_index` (
 
 然后使用`scrapy crawl index`命令即可
 
-附：三千余部番剧基本信息数据库 [下载地址](https://www.dropbox.com/s/wg09t0qx7ypt70k/bilibili_index.sql?dl=0) (DropBox链接，需科学上网)
+附：Bilibili三千余部番剧基本信息数据库，下载地址：[https://drive.engine.wang/s/JdFa](https://drive.engine.wang/s/JdFa) （提取码：engine）
+新建一个数据库，然后`source bangumi.sql`即可自动建表和导入数据
 
 
